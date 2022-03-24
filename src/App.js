@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Search from './components/Search'
 
-export default function BasicExample() {
+export default function App() {
   return (
     <Router>
       <div>
