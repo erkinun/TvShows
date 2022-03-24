@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Search from './components/Search'
 
+// TODO remove the nav link
 export default function App() {
   return (
     <Router>

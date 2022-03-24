@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchShows } from '../redux/store'
 import ShowCard from './ShowCard'
 
+// TODO remove git and make one commit on Sunday
+// TODO fix the rendering when you fetch new stuff
+
 const Search = () => {
   const searchDispatch = useDispatch()
   const shows = useSelector((state) => state.hits)

@@ -14,7 +14,6 @@ export const fetchShows = createAsyncThunk(
 const searchSlice = createSlice({
   name: 'search-slice',
   initialState: {
-    // TODO handle initial load
     hits: [],
     status: 'idle',
   },
@@ -27,7 +26,7 @@ const searchSlice = createSlice({
       .addCase(fetchShows.fulfilled, (state, action) => {
         state.status = 'succeeded'
         // Add any fetched posts to the array
-        state.hits = state.hits.concat(action.payload)
+        state.hits = action.payload
       })
       .addCase(fetchShows.rejected, (state, action) => {
         state.status = 'failed'
@@ -41,6 +40,6 @@ const store = configureStore({
 })
 
 // TODO remove this later on
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState()))
 
 export default store
