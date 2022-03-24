@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Search from './components/Search'
 
 export default function BasicExample() {
   return (
@@ -16,15 +17,8 @@ export default function BasicExample() {
 
         <hr />
 
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Search />} />
           <Route path='about' element={<About />} />
         </Routes>
       </div>
@@ -32,17 +26,7 @@ export default function BasicExample() {
   )
 }
 
-// You can think of these components as "pages"
-// in your app.
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  )
-}
-
+// TODO remove or add your creds to this page maybe
 function About() {
   return (
     <div>
