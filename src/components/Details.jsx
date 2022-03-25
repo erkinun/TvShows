@@ -9,6 +9,22 @@ import { fetchDetails } from '../redux/detailSlice'
 // TODO get show by id - just fetch from the api with id
 // TODO initial data load
 
+// TODO either cut it to 5, or horizontally have a slider thing
+const CastSection = ({ casts = [] }) => {
+  return (
+    <div>
+      {casts.map((c) => {
+        return (
+          <div id={c.person.id}>
+            <img src={c.person.image.medium} alt='person' />
+            <div>{c.person.name}</div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 const Details = () => {
   const detailsDispatch = useDispatch()
   const params = useParams()
@@ -26,6 +42,7 @@ const Details = () => {
   }, [status, detailsDispatch, showId])
 
   // TODO maybe use the loading state for some animation
+  // TODO remove html from summary text
   return (
     <div>
       <div>
@@ -38,10 +55,9 @@ const Details = () => {
           <button>Fav Button</button>
         </div>
       </div>
-      {
-        // TODO remove html from summary
-      }
       <div className='summary'>{showDetails.summary?.summary}</div>
+      <div></div>
+      <CastSection casts={showDetails.cast} />
     </div>
   )
 }
