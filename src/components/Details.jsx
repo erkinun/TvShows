@@ -11,7 +11,7 @@ const Details = () => {
   const params = useParams()
   const showId = params.showId
   const showDetails = useSelector((state) =>
-    state.hits.map((s) => s.show).find((s) => s.id === showId)
+    state.search.hits.map((s) => s.show).find((s) => s.id === showId)
   )
   console.log(showDetails)
   return (

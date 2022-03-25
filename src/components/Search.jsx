@@ -8,8 +8,8 @@ import ShowCard from './ShowCard'
 
 const Search = () => {
   const searchDispatch = useDispatch()
-  const shows = useSelector((state) => state.hits)
-  const status = useSelector((state) => state.status)
+  const shows = useSelector((state) => state.search.hits)
+  const status = useSelector((state) => state.search.status)
 
   useEffect(() => {
     if (status === 'idle') {
