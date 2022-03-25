@@ -8,16 +8,38 @@ import { fetchDetails } from '../redux/detailSlice'
 // TODO handle fav status
 // TODO get show by id - just fetch from the api with id
 // TODO initial data load
-
 // TODO either cut it to 5, or horizontally have a slider thing
+
+// TODO bug
+// TODO fix the back button bug, shows map doesn't work
+// TODO details doesnt work on click for some reason
 const CastSection = ({ casts = [] }) => {
   return (
     <div>
+      <h2>Cast</h2>
       {casts.map((c) => {
         return (
-          <div id={c.person.id}>
-            <img src={c.person.image.medium} alt='person' />
+          <div key={c.person?.id}>
+            <img src={c.person?.image?.medium} alt='person' />
             <div>{c.person.name}</div>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+const SeasonSection = ({ seasons = [] }) => {
+  return (
+    <div>
+      <h2>Seasons</h2>
+      {seasons.map((s) => {
+        return (
+          <div key={s.id}>
+            <img src={s.image?.medium} alt='person' />
+            <div>
+              Season {s.number} - {s.episodeOrder} episodes
+            </div>
           </div>
         )
       })}
@@ -58,6 +80,7 @@ const Details = () => {
       <div className='summary'>{showDetails.summary?.summary}</div>
       <div></div>
       <CastSection casts={showDetails.cast} />
+      <SeasonSection seasons={showDetails.seasons} />
     </div>
   )
 }
