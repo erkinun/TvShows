@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchShows } from '../redux/store'
+import { fetchShows } from '../redux/searchSlice'
 import ShowCard from './ShowCard'
 
 // TODO remove git and make one commit on Sunday
