@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { detailSlice } from './detailSlice'
 import { searchSlice } from './searchSlice'
 
 const store = configureStore({
-  reducer: { search: searchSlice.reducer },
+  reducer: { search: searchSlice.reducer, detail: detailSlice.reducer },
 })
 
 // TODO remove this later on

@@ -24,7 +24,6 @@ export const searchSlice = createSlice({
       })
       .addCase(fetchShows.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        // Add any fetched posts to the array
         state.hits = action.payload
       })
       .addCase(fetchShows.rejected, (state, action) => {
