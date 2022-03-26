@@ -7,10 +7,6 @@ import { fetchDetails } from '../redux/detailSlice'
 // TODO handle fav status
 // TODO initial data load
 
-// TODO bug
-// TODO fix the back button bug, shows map doesn't work
-// TODO details doesnt work on click for some reason
-
 // TODO either cut it to 5, or horizontally have a slider thing
 const CastSection = ({ casts = [] }) => {
   return (

@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: { search: searchSlice.reducer, detail: detailSlice.reducer },
 })
 
-// TODO remove this later on
+// uncomment when you want to debug store
 // store.subscribe(() => console.log(store.getState()))
 
 export default store
