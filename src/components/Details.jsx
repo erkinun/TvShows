@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { fetchDetails } from '../redux/detailSlice'
 
-// TODO fetch cast and season
 // TODO handle fav status
-// TODO get show by id - just fetch from the api with id
 // TODO initial data load
-// TODO either cut it to 5, or horizontally have a slider thing
 
 // TODO bug
 // TODO fix the back button bug, shows map doesn't work
 // TODO details doesnt work on click for some reason
+
+// TODO either cut it to 5, or horizontally have a slider thing
 const CastSection = ({ casts = [] }) => {
   return (
     <div>
@@ -29,6 +28,7 @@ const CastSection = ({ casts = [] }) => {
   )
 }
 
+// TODO either cut it to 5, or horizontally have a slider thing
 const SeasonSection = ({ seasons = [] }) => {
   return (
     <div>
@@ -55,8 +55,7 @@ const Details = () => {
   const showDetails = useSelector((state) => {
     return state.detail.details || {}
   })
-  console.log(showDetails)
-  // TODO do we need to check for state?
+
   useEffect(() => {
     if (status === 'idle') {
       detailsDispatch(fetchDetails(showId))
