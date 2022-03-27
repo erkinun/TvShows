@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { fetchDetails } from '../redux/detailSlice'
 import { addFav, removeFav } from '../redux/favSlice'
+import DOMPurify from 'dompurify'
 
 // TODO initial data load
 
@@ -93,7 +94,9 @@ const Details = () => {
 
       <div
         className='summary'
-        dangerouslySetInnerHTML={{ __html: showDetails.summary?.summary }}
+        dangerouslySetInnerHTML={{
+          __html: DOMPurify.sanitize(showDetails.summary?.summary),
+        }}
       ></div>
       <div></div>
       <CastSection casts={showDetails.cast} />
