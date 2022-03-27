@@ -15,11 +15,13 @@ export const searchSlice = createSlice({
   initialState: {
     hits: [],
     status: 'idle',
+    lastSearch: '',
   },
   reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchShows.pending, (state, action) => {
+        state.lastSearch = action.meta.arg
         state.status = 'loading'
       })
       .addCase(fetchShows.fulfilled, (state, action) => {

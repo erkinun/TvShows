@@ -10,6 +10,7 @@ const Search = () => {
   const searchDispatch = useDispatch()
   const shows = useSelector((state) => state.search.hits)
   const status = useSelector((state) => state.search.status)
+  const lastSearch = useSelector((state) => state.search.lastSearch)
 
   useEffect(() => {
     if (status === 'idle') {
@@ -21,6 +22,7 @@ const Search = () => {
     <div>
       <div>
         <input
+          defaultValue={lastSearch}
           placeholder='Search for a tvshow'
           onBlur={(e) => searchDispatch(fetchShows(e.target.value))}
         />
