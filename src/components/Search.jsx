@@ -24,7 +24,7 @@ const Search = () => {
         <input
           defaultValue={lastSearch}
           placeholder='Search for a tvshow'
-          onBlur={(e) => searchDispatch(fetchShows(e.target.value))}
+          onChange={(e) => searchDispatch(fetchShows(e.target.value))}
         />
       </div>
       <div>List of shows: {shows.length}</div>

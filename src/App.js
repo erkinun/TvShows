@@ -4,8 +4,6 @@ import Details from './components/Details'
 import Search from './components/Search'
 
 // TODO bugs
-// 3 - either clean the summary of its tags, or inject html
-// 4 - enter should work for searching too
 
 export default function App() {
   return (
