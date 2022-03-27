@@ -3,7 +3,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchDetails = createAsyncThunk(
   'shows/details',
   async (id = '1') => {
-    // TODO group the fetches together for performance
     const response = await fetch(`https://api.tvmaze.com/shows/${id}`)
     const castResponse = await fetch(`https://api.tvmaze.com/shows/${id}/cast`)
     const seasonResponse = await fetch(

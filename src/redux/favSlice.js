@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { loadFavourites } from './localStorage'
 
-// TODO implement the fav slice of the store
 export const favSlice = createSlice({
   name: 'fav-slice',
   initialState: {

@@ -2,17 +2,14 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { reset } from '../redux/detailSlice'
 
-const ShowCard = ({ show: { name, type, image, id } }) => {
+const ShowCard = ({ show: { name, genres, image, id } }) => {
   const resetDispatch = useDispatch()
   return (
     <Link to={`/details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
-      <div>
-        {
-          // TODO maybe replace img with something more performant
-        }
+      <div className='search-show-card'>
         <img src={image?.medium} alt='show' />
-        <div>{name}</div>
-        <div>{type}</div>
+        <div className='name'>{name}</div>
+        <div className='genre'>{genres.join(', ')}</div>
         <div>{''}</div>
       </div>
     </Link>

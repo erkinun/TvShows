@@ -1,0 +1,94 @@
+.details-wrapper {
+  display: flex;
+  margin-top: 50px;
+}
+
+.details-content {
+  width: 740px;
+  margin: auto;
+}
+
+.wrap {
+  display: flex;
+  background: #ccc;
+  justify-content: space-between;
+}
+.wrap div:last-child {
+  margin-left: auto;
+}
+
+.back-link {
+  display: flex;
+  position: relative;
+}
+
+.back-link a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: absolute;
+  top: 10px;
+  left: -50px;
+}
+
+.details-content img {
+  border-radius: 5px;
+}
+
+.details-content .header {
+  align-items: flex-end;
+  display: flex;
+}
+
+.details-content .header .title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-left: 30px;
+  margin-right: 20px;
+  inline-size: 250px;
+  overflow-wrap: break-word;
+}
+
+.details-content .summary {
+  margin-top: 30px;
+}
+
+.details-content .cast {
+  margin-top: 50px;
+}
+
+.details-content .cast .list {
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.details-content .cast .list .each {
+  margin-right: 45px;
+}
+
+.details-content .cast .list img {
+  width: 80px;
+}
+
+.details-content .season {
+  margin-top: 50px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.details-content .season .list {
+  display: flex;
+}
+
+.details-content .season .list .each {
+  margin-right: 45px;
+}
+
+.details-content .season .list .each .info {
+  overflow-wrap: break-word;
+}
+
+.details-content .season .list img {
+  width: 120px;
+}

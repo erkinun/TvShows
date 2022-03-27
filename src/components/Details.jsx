@@ -6,40 +6,43 @@ import { fetchDetails } from '../redux/detailSlice'
 import { addFav, removeFav } from '../redux/favSlice'
 import DOMPurify from 'dompurify'
 
-// TODO initial data load
+import './Details.css'
 
-// TODO either cut it to 5, or horizontally have a slider thing
+// TODO find a NA image and use where image doesn't exist
 const CastSection = ({ casts = [] }) => {
   return (
-    <div>
+    <div className='cast'>
       <h2>Cast</h2>
-      {casts.map((c) => {
-        return (
-          <div key={c.person?.id}>
-            <img src={c.person?.image?.medium} alt='person' />
-            <div>{c.person.name}</div>
-          </div>
-        )
-      })}
+      <div className='list'>
+        {casts.map((c) => {
+          return (
+            <div className='each' key={c.person?.id}>
+              <img src={c.person?.image?.medium} alt='cast-person' />
+              <div>{c.person.name}</div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
 
-// TODO either cut it to 5, or horizontally have a slider thing
 const SeasonSection = ({ seasons = [] }) => {
   return (
-    <div>
+    <div className='season'>
       <h2>Seasons</h2>
-      {seasons.map((s) => {
-        return (
-          <div key={s.id}>
-            <img src={s.image?.medium} alt='person' />
-            <div>
-              Season {s.number} - {s.episodeOrder} episodes
+      <div className='list'>
+        {seasons.map((s) => {
+          return (
+            <div className='each' key={s.id}>
+              <img src={s.image?.medium} alt='season' />
+              <div className='info'>
+                Season {s.number} - {s.episodeOrder} episodes
+              </div>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }
@@ -70,37 +73,36 @@ const Details = () => {
     }
   }, [status, detailsDispatch, showId])
 
-  // TODO maybe use the loading state for some animation
-  // TODO remove html from summary text
   return (
-    <div>
-      <div>
-        <Link to='/'>BACK</Link>
-      </div>
-      <div className='header'>
-        <img src={showDetails.summary?.image?.medium} alt='show' />
-        <div>{showDetails.summary?.name}</div>
-        <FavButton
-          isFav={isFavourite}
-          toggleFav={(nextState) => {
-            if (nextState) {
-              detailsDispatch(addFav(showId))
-            } else {
-              detailsDispatch(removeFav(showId))
-            }
-          }}
-        />
-      </div>
+    <div className='details-wrapper'>
+      <div className='details-content'>
+        <div className='back-link'>
+          <Link to='/'>BACK</Link>
+        </div>
+        <div className='header'>
+          <img src={showDetails.summary?.image?.medium} alt='show' />
+          <div className='title'>{showDetails.summary?.name}</div>
+          <FavButton
+            isFav={isFavourite}
+            toggleFav={(nextState) => {
+              if (nextState) {
+                detailsDispatch(addFav(showId))
+              } else {
+                detailsDispatch(removeFav(showId))
+              }
+            }}
+          />
+        </div>
 
-      <div
-        className='summary'
-        dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(showDetails.summary?.summary),
-        }}
-      ></div>
-      <div></div>
-      <CastSection casts={showDetails.cast} />
-      <SeasonSection seasons={showDetails.seasons} />
+        <div
+          className='summary'
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(showDetails.summary?.summary),
+          }}
+        ></div>
+        <CastSection casts={showDetails.cast} />
+        <SeasonSection seasons={showDetails.seasons} />
+      </div>
     </div>
   )
 }
