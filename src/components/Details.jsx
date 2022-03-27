@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { fetchDetails } from '../redux/detailSlice'
+import { addFav, removeFav } from '../redux/favSlice'
 
 // TODO handle fav status
 // TODO initial data load
@@ -43,11 +44,22 @@ const SeasonSection = ({ seasons = [] }) => {
   )
 }
 
+const FavButton = ({ isFav, toggleFav }) => {
+  return (
+    <div>
+      <button onClick={() => toggleFav(!isFav)}>
+        {isFav ? 'UnFav Buttton' : 'Fav Button'}
+      </button>
+    </div>
+  )
+}
+
 const Details = () => {
   const detailsDispatch = useDispatch()
   const params = useParams()
   const showId = params.showId
   const status = useSelector((state) => state.detail.status)
+  const isFavourite = useSelector((state) => state.favs.favs.includes(showId))
   const showDetails = useSelector((state) => {
     return state.detail.details || {}
   })
@@ -68,9 +80,16 @@ const Details = () => {
       <div className='header'>
         <img src={showDetails.summary?.image?.medium} alt='show' />
         <div>{showDetails.summary?.name}</div>
-        <div>
-          <button>Fav Button</button>
-        </div>
+        <FavButton
+          isFav={isFavourite}
+          toggleFav={(nextState) => {
+            if (nextState) {
+              detailsDispatch(addFav(showId))
+            } else {
+              detailsDispatch(removeFav(showId))
+            }
+          }}
+        />
       </div>
       <div className='summary'>{showDetails.summary?.summary}</div>
       <div></div>

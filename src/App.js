@@ -1,7 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Details from './components/Details'
 import Search from './components/Search'
+
+// TODO bugs
+// 1 - doesn't refresh the details after clicking on a new show
 
 export default function App() {
   return (
