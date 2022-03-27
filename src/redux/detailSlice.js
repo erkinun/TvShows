@@ -26,7 +26,11 @@ export const detailSlice = createSlice({
     hits: [],
     status: 'idle',
   },
-  reducers: {},
+  reducers: {
+    reset(state) {
+      state.status = 'idle'
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchDetails.pending, (state, action) => {
@@ -42,3 +46,5 @@ export const detailSlice = createSlice({
       })
   },
 })
+
+export const { reset } = detailSlice.actions

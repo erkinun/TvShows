@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import { fetchDetails } from '../redux/detailSlice'
 import { addFav, removeFav } from '../redux/favSlice'
 
-// TODO handle fav status
 // TODO initial data load
 
 // TODO either cut it to 5, or horizontally have a slider thing
@@ -91,7 +90,11 @@ const Details = () => {
           }}
         />
       </div>
-      <div className='summary'>{showDetails.summary?.summary}</div>
+
+      <div
+        className='summary'
+        dangerouslySetInnerHTML={{ __html: showDetails.summary?.summary }}
+      ></div>
       <div></div>
       <CastSection casts={showDetails.cast} />
       <SeasonSection seasons={showDetails.seasons} />

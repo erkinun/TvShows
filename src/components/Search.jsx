@@ -33,7 +33,6 @@ const Search = () => {
             <ShowCard show={s} key={s.id} />
           ))}
       </div>
-      <div>Status: {status}</div>
     </div>
   )
 }

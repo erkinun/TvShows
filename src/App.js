@@ -4,7 +4,8 @@ import Details from './components/Details'
 import Search from './components/Search'
 
 // TODO bugs
-// 1 - doesn't refresh the details after clicking on a new show
+// 2 - either keep the search on input or get rid of the state on back click
+// 3 - either clean the summary of its tags, or inject html
 
 export default function App() {
   return (
@@ -15,18 +16,8 @@ export default function App() {
           <Route path='/details' element={<Details />}>
             <Route path=':showId' element={<Details />} />
           </Route>
-          <Route path='about' element={<About />} />
         </Routes>
       </div>
     </Router>
-  )
-}
-
-// TODO remove or add your creds to this page maybe
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
   )
 }
