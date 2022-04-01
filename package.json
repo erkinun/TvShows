@@ -1,7 +1,7 @@
 {
   "name": "tvshows",
   "version": "0.1.0",
-  "homepage": "https://erkinun.github.io/TvShows",
+  "homepage": "https://erkinun.github.io/tvshows",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
