@@ -5,7 +5,7 @@ import { reset } from '../redux/detailSlice'
 const ShowCard = ({ show: { name, genres, image, id } }) => {
   const resetDispatch = useDispatch()
   return (
-    <Link to={`/details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
+    <Link to={`details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
       <div className='search-show-card'>
         <img src={image?.medium} alt='show' />
         <div className='name'>{name}</div>
