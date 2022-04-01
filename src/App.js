@@ -5,7 +5,7 @@ import Search from './components/Search'
 
 export default function App() {
   return (
-    <Router basename='tvshows'>
+    <Router basename='TvShows'>
       <div>
         <Routes>
           <Route path='/'>
