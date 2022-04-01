@@ -4,7 +4,8 @@
 }
 
 .details-content {
-  width: 740px;
+  max-width: 740px;
+  width: 80%;
   margin: auto;
 }
 
@@ -38,6 +39,18 @@
 .details-content .header {
   align-items: flex-end;
   display: flex;
+}
+
+@media only screen and (max-width: 400px) {
+  .details-content .header {
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .details-content .header .title {
+    margin: 0 !important;
+  }
 }
 
 .details-content .header .title {
