@@ -62,7 +62,7 @@ const Details = () => {
   const params = useParams()
   const showId = params.showId
   const status = useSelector((state) => state.detail.status)
-  const isFavourite = useSelector((state) => state.favs.favs.includes(showId))
+  const isFavourite = useSelector((state) => state.favs?.favs?.includes(showId))
   const showDetails = useSelector((state) => {
     return state.detail.details || {}
   })
