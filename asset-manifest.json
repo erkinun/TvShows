@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TvShows/static/css/main.d16a4f04.css",
+    "main.js": "/TvShows/static/js/main.dfe6377d.js",
+    "static/js/787.28899943.chunk.js": "/TvShows/static/js/787.28899943.chunk.js",
+    "index.html": "/TvShows/index.html",
+    "main.d16a4f04.css.map": "/TvShows/static/css/main.d16a4f04.css.map",
+    "main.dfe6377d.js.map": "/TvShows/static/js/main.dfe6377d.js.map",
+    "787.28899943.chunk.js.map": "/TvShows/static/js/787.28899943.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d16a4f04.css",
+    "static/js/main.dfe6377d.js"
+  ]
+}
