@@ -1,4 +1,4 @@
-# Tv Shows
+# Tv Shows (a client for TV Maze API)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
