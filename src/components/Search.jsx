@@ -6,7 +6,7 @@ import './Search.css'
 
 const SearchBar = ({ lastSearch, searchDispatch }) => {
   return (
-    <div className='top-bar'>
+    <nav className='top-bar'>
       <div className='brand'>TV Shows</div>
       <div className='search-bar'>
         <svg aria-hidden='true' width='18' height='18' viewBox='0 0 18 18'>
@@ -18,7 +18,7 @@ const SearchBar = ({ lastSearch, searchDispatch }) => {
           onChange={(e) => searchDispatch(fetchShows(e.target.value))}
         />
       </div>
-    </div>
+    </nav>
   )
 }
 
