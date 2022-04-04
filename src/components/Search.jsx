@@ -12,7 +12,7 @@ const SearchBar = ({ lastSearch, searchDispatch }) => {
       </svg>
       <input
         defaultValue={lastSearch}
-        placeholder='Search for a tvshow'
+        placeholder='Search for a TV Show'
         onChange={(e) => searchDispatch(fetchShows(e.target.value))}
       />
     </div>
