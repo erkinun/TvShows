@@ -1,17 +1,24 @@
 .search-content {
   max-width: 740px;
-  width: 80%;
   margin: auto;
+}
+
+@media only screen and (min-width: 400px) {
+  .search-content {
+    width: 80%;
+  }
 }
 
 .top-bar {
   display: flex;
   margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .top-bar .brand {
   border-radius: 8px;
-  font-size: 18px;
+
   font-weight: 800;
   margin-right: 10px;
   font-family: 'Roboto', 'Helvetica', 'Arial', 'sans-serif';
@@ -24,6 +31,12 @@
   justify-content: center;
   padding: 0 5px;
   width: 100px;
+}
+
+@media only screen and (min-width: 400px) {
+  .top-bar .brand {
+    font-size: 18px;
+  }
 }
 
 .search-bar {
