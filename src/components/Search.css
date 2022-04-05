@@ -75,8 +75,10 @@
 }
 
 .search-results a {
+  background-color: #1a1a1a;
   text-decoration: none;
   color: inherit;
+  margin-bottom: 1em;
 }
 
 .search-show-card {
@@ -85,6 +87,7 @@
 }
 
 .search-show-card .name {
+  color: white;
   inline-size: 210px;
   font-size: 26px;
   overflow-wrap: break-word;
