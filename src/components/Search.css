@@ -81,6 +81,10 @@
   margin-bottom: 1em;
 }
 
+.show-card-img {
+  width: 100%;
+}
+
 .search-show-card {
   margin: 5px;
   margin-bottom: 20px;
