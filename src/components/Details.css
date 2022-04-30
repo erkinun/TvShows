@@ -1,6 +1,7 @@
 .details-wrapper {
   display: flex;
   margin-top: 50px;
+  color: white;
 }
 
 .details-content {

@@ -2,30 +2,15 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import DOMPurify from 'dompurify'
+
 import { fetchDetails } from '../redux/detailSlice'
 import { addFav, removeFav } from '../redux/favSlice'
-import DOMPurify from 'dompurify'
+import CastSection from './details/Cast'
 
 import './Details.css'
 
 // TODO find a NA image and use where image doesn't exist
-const CastSection = ({ casts = [] }) => {
-  return (
-    <div className='cast'>
-      <h2>Cast</h2>
-      <div className='list'>
-        {casts.map((c) => {
-          return (
-            <div className='each' key={c.person?.id}>
-              <img src={c.person?.image?.medium} alt='cast-person' />
-              <div>{c.person.name}</div>
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
 
 const SeasonSection = ({ seasons = [] }) => {
   return (
