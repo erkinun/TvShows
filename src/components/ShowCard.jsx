@@ -6,7 +6,7 @@ const ShowCard = ({ show: { name, genres, image, id } }) => {
   const resetDispatch = useDispatch()
   return (
     <Link to={`details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
-      <div>
+      <div className='show-card-wrapper'>
         <img className='show-card-img' src={image?.medium} alt='show' />
         <div className='search-show-card'>
           <div className='name'>{name}</div>

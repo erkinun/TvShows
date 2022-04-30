@@ -81,6 +81,10 @@
   margin-bottom: 1em;
 }
 
+.show-card-wrapper {
+  width: 150px;
+}
+
 .show-card-img {
   width: 100%;
 }
@@ -92,7 +96,6 @@
 
 .search-show-card .name {
   color: white;
-  inline-size: 210px;
   font-size: 26px;
   overflow-wrap: break-word;
 }
@@ -112,6 +115,5 @@
 
 .search-show-card .genre {
   color: lightslategray;
-  inline-size: 210px;
   overflow-wrap: break-word;
 }
