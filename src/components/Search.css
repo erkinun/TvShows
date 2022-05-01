@@ -12,15 +12,14 @@
 .top-bar {
   display: flex;
   margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
 .top-bar .brand {
+  box-sizing: border-box;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
-  margin-right: 10px;
+  margin-right: 2%;
   font-family: 'Roboto', 'Helvetica', 'Arial', 'sans-serif';
   color: #000;
   display: flex;
@@ -29,23 +28,37 @@
   height: 50px;
   line-height: 50px;
   justify-content: center;
-  padding: 0 5px;
-  width: 100px;
+  min-width: 80px;
+  width: 18%;
 }
 
 @media only screen and (min-width: 400px) {
+  .top-bar {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
   .top-bar .brand {
-    font-size: 14px;
+    font-size: 18px;
+    padding: 0 5px;
+    width: 15%;
   }
 }
 
 .search-bar {
   background-color: white;
+  box-sizing: border-box;
   display: flex;
   border: none;
-  width: 100%;
+  width: 75%;
   height: 50px;
   position: relative;
+}
+
+@media only screen and (min-width: 400px) {
+  .search-bar {
+    width: 85%;
+  }
 }
 
 .search-bar input {
@@ -54,9 +67,15 @@
   height: 100%;
   padding-top: 0;
   padding-bottom: 0;
+  width: 90%;
 }
 
 .search-bar input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.search-bar input:focus {
   border: none;
   outline: none;
 }
