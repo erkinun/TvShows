@@ -62,16 +62,6 @@ const Details = () => {
             {premieredYear} - {endYear})
           </div>
           <img src={showDetails.summary?.image?.medium} alt='show' />
-          <FavButton
-            isFav={isFavourite}
-            toggleFav={(nextState) => {
-              if (nextState) {
-                detailsDispatch(addFav(showId))
-              } else {
-                detailsDispatch(removeFav(showId))
-              }
-            }}
-          />
 
           <div className='genres'>
             {genres.map((g) => (
@@ -85,7 +75,17 @@ const Details = () => {
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(showDetails.summary?.summary),
           }}
-        ></div>
+        />
+        <FavButton
+          isFav={isFavourite}
+          toggleFav={(nextState) => {
+            if (nextState) {
+              detailsDispatch(addFav(showId))
+            } else {
+              detailsDispatch(removeFav(showId))
+            }
+          }}
+        />
         <CastSection casts={showDetails.cast} />
         <SeasonSection seasons={showDetails.seasons} />
       </div>

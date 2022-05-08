@@ -98,11 +98,6 @@
   padding: 0 1rem;
 }
 
-.details-content .header .fav-button {
-  margin-top: 1rem;
-  padding: 0 1rem;
-}
-
 .details-content .header .genres .genre {
   border: 2px solid whitesmoke;
   border-radius: 1rem;
@@ -118,6 +113,11 @@
 
 .details-content .summary p {
   width: 90%;
+}
+
+.details-content .fav-button {
+  margin-top: 1rem;
+  padding: 0 1rem;
 }
 
 .details-content .cast {
