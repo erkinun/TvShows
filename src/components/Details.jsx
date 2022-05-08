@@ -39,6 +39,15 @@ const Details = () => {
     }
   }, [status, detailsDispatch, showId])
 
+  const {
+    rating: { average } = {},
+    network,
+    premiered,
+    ended,
+  } = showDetails?.summary || {}
+  const premieredYear = premiered?.slice(0, 4)
+  const endYear = ended?.slice(0, 4) || 'running'
+
   return (
     <div className='details-wrapper'>
       <div className='details-content'>
@@ -47,6 +56,10 @@ const Details = () => {
         </div>
         <div className='header'>
           <div className='title'>{showDetails.summary?.name}</div>
+          <div className='info'>
+            {average} ({network?.name && `${network.name}, `}
+            {premieredYear} - {endYear})
+          </div>
           <img src={showDetails.summary?.image?.medium} alt='show' />
 
           <FavButton

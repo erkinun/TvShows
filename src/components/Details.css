@@ -79,6 +79,10 @@
   }
 }
 
+.details-content .header .info {
+  margin-bottom: 10px;
+}
+
 .details-content .summary {
   margin-top: 30px;
 }
