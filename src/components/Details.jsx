@@ -46,8 +46,9 @@ const Details = () => {
           <Link to='/'>BACK</Link>
         </div>
         <div className='header'>
-          <img src={showDetails.summary?.image?.medium} alt='show' />
           <div className='title'>{showDetails.summary?.name}</div>
+          <img src={showDetails.summary?.image?.medium} alt='show' />
+
           <FavButton
             isFav={isFavourite}
             toggleFav={(nextState) => {
