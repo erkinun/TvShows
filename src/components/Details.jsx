@@ -15,7 +15,7 @@ import './Details.css'
 
 const FavButton = ({ isFav, toggleFav }) => {
   return (
-    <div>
+    <div className='fav-button'>
       <button onClick={() => toggleFav(!isFav)}>
         {isFav ? 'UnFav Buttton' : 'Fav Button'}
       </button>

@@ -11,8 +11,14 @@
 .details-content {
   background-color: rgb(31, 31, 31);
   max-width: 740px;
-  width: 80%;
+  width: 100%;
   margin: auto;
+}
+
+@media only screen and (min-width: 400px) {
+  .details-content {
+    width: 80%;
+  }
 }
 
 .wrap {
@@ -27,6 +33,7 @@
 .back-link {
   display: flex;
   position: relative;
+  padding: 0 1rem;
 }
 
 .back-link a {
@@ -70,6 +77,7 @@
   font-weight: 400;
   margin-left: 30px;
   margin-right: 20px;
+  padding: 0 1rem;
   inline-size: 250px;
   overflow-wrap: break-word;
 }
@@ -82,10 +90,17 @@
 
 .details-content .header .info {
   margin-bottom: 10px;
+  padding: 0 1rem;
 }
 
 .details-content .header .genres {
   display: flex;
+  padding: 0 1rem;
+}
+
+.details-content .header .fav-button {
+  margin-top: 1rem;
+  padding: 0 1rem;
 }
 
 .details-content .header .genres .genre {
@@ -96,7 +111,13 @@
 }
 
 .details-content .summary {
-  margin-top: 30px;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.details-content .summary p {
+  width: 90%;
 }
 
 .details-content .cast {
