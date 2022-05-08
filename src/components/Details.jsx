@@ -65,7 +65,9 @@ const Details = () => {
 
           <div className='genres'>
             {genres.map((g) => (
-              <div className='genre'>{g}</div>
+              <div key={g} className='genre'>
+                {g}
+              </div>
             ))}
           </div>
         </div>
