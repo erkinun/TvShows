@@ -3,7 +3,16 @@ import { useDispatch } from 'react-redux'
 import { reset } from '../redux/detailSlice'
 
 const ShowCard = ({
-  show: { name, genres, image, id, network, premiered, ended },
+  show: {
+    name,
+    genres,
+    image,
+    id,
+    network,
+    premiered,
+    ended,
+    rating: { average } = {},
+  },
 }) => {
   const resetDispatch = useDispatch()
   const premieredYear = premiered?.slice(0, 4)
@@ -15,7 +24,7 @@ const ShowCard = ({
         <div className='search-show-card'>
           <div className='name'>{name}</div>
           <div className='network'>
-            ({network?.name}, {premieredYear} - {endYear})
+            {average} ({network?.name}, {premieredYear} - {endYear})
           </div>
           <div className='genre'>{genres.join(', ')}</div>
           <div>{''}</div>
