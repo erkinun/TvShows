@@ -24,7 +24,8 @@ const ShowCard = ({
         <div className='search-show-card'>
           <div className='name'>{name}</div>
           <div className='network'>
-            {average} ({network?.name}, {premieredYear} - {endYear})
+            {average} ({network?.name && `${network.name}, `}
+            {premieredYear} - {endYear})
           </div>
           <div className='genre'>{genres.join(', ')}</div>
           <div>{''}</div>
