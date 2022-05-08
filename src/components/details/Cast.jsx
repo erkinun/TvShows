@@ -3,11 +3,12 @@ const CastSection = ({ casts = [] }) => {
     <div className='cast'>
       <h2>Cast</h2>
       <div className='list'>
-        {casts.map((c) => {
+        {casts.map(({ person = {}, character = {} }) => {
           return (
-            <div className='each' key={c.person?.id}>
-              <img src={c.person?.image?.medium} alt='cast-person' />
-              <div>{c.person.name}</div>
+            <div className='each' key={person.id}>
+              <img src={person.image?.medium} alt='cast-person' />
+              <div>{person.name}</div>
+              <div className='character'>{character.name}</div>
             </div>
           )
         })}

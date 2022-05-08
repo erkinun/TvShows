@@ -138,6 +138,11 @@
   width: 80px;
 }
 
+.details-content .cast .list .each .character {
+  font-size: 0.75rem;
+  color: #ccc;
+}
+
 .details-content .season {
   margin-top: 50px;
   overflow: auto;
