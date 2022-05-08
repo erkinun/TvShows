@@ -9,6 +9,7 @@
 }
 
 .details-content {
+  background-color: rgb(31, 31, 31);
   max-width: 740px;
   width: 80%;
   margin: auto;
@@ -81,6 +82,17 @@
 
 .details-content .header .info {
   margin-bottom: 10px;
+}
+
+.details-content .header .genres {
+  display: flex;
+}
+
+.details-content .header .genres .genre {
+  border: 2px solid whitesmoke;
+  border-radius: 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.25rem 0.75rem;
 }
 
 .details-content .summary {

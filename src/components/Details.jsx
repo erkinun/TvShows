@@ -40,6 +40,7 @@ const Details = () => {
   }, [status, detailsDispatch, showId])
 
   const {
+    genres = [],
     rating: { average } = {},
     network,
     premiered,
@@ -61,7 +62,6 @@ const Details = () => {
             {premieredYear} - {endYear})
           </div>
           <img src={showDetails.summary?.image?.medium} alt='show' />
-
           <FavButton
             isFav={isFavourite}
             toggleFav={(nextState) => {
@@ -72,6 +72,12 @@ const Details = () => {
               }
             }}
           />
+
+          <div className='genres'>
+            {genres.map((g) => (
+              <div className='genre'>{g}</div>
+            ))}
+          </div>
         </div>
 
         <div
