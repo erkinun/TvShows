@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/TvShows/static/css/main.a5074640.css",
-    "main.js": "/TvShows/static/js/main.6130e23c.js",
+    "main.css": "/TvShows/static/css/main.a777f862.css",
+    "main.js": "/TvShows/static/js/main.cab67b58.js",
     "static/js/787.725541ba.chunk.js": "/TvShows/static/js/787.725541ba.chunk.js",
     "index.html": "/TvShows/index.html",
-    "main.a5074640.css.map": "/TvShows/static/css/main.a5074640.css.map",
-    "main.6130e23c.js.map": "/TvShows/static/js/main.6130e23c.js.map",
+    "main.a777f862.css.map": "/TvShows/static/css/main.a777f862.css.map",
+    "main.cab67b58.js.map": "/TvShows/static/js/main.cab67b58.js.map",
     "787.725541ba.chunk.js.map": "/TvShows/static/js/787.725541ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5074640.css",
-    "static/js/main.6130e23c.js"
+    "static/css/main.a777f862.css",
+    "static/js/main.cab67b58.js"
   ]
 }
