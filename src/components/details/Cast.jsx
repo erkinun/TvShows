@@ -7,7 +7,7 @@ const CastSection = ({ casts = [] }) => {
           return (
             <div className='each' key={person.id}>
               <img src={person.image?.medium} alt='cast-person' />
-              <div>{person.name}</div>
+              <div className='name'>{person.name}</div>
               <div className='character'>{character.name}</div>
             </div>
           )

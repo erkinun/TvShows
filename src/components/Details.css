@@ -122,20 +122,35 @@
 
 .details-content .cast {
   margin-top: 50px;
+  margin-left: 1rem;
 }
 
 .details-content .cast .list {
   display: flex;
   overflow: auto;
   white-space: nowrap;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.details-content .cast .list::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .details-content .cast .list .each {
   margin-right: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .details-content .cast .list img {
-  width: 80px;
+  border-radius: 50%;
+  width: 7rem;
+}
+
+.details-content .cast .list .each .name {
+  line-height: 2rem;
 }
 
 .details-content .cast .list .each .character {
@@ -145,6 +160,7 @@
 
 .details-content .season {
   margin-top: 50px;
+  margin-left: 1rem;
   overflow: auto;
   white-space: nowrap;
 }
@@ -155,6 +171,9 @@
 
 .details-content .season .list .each {
   margin-right: 45px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .details-content .season .list .each .info {
