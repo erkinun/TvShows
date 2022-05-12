@@ -53,18 +53,20 @@
   width: 100%;
 }
 
+@media only screen and (min-width: 400px) {
+  .details-content .show-img {
+    height: 20rem;
+    width: auto;
+  }
+}
+
 .details-content .header {
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 400px) {
-  .details-content .header {
-    align-items: flex-start;
-    flex-direction: column;
-    display: flex;
-  }
-
   .details-content .header .title {
     margin: 0 !important;
   }

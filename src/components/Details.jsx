@@ -61,7 +61,11 @@ const Details = () => {
             {average} ({network?.name && `${network.name}, `}
             {premieredYear} - {endYear})
           </div>
-          <img src={showDetails.summary?.image?.medium} alt='show' />
+          <img
+            className='show-img'
+            src={showDetails.summary?.image?.medium}
+            alt='show'
+          />
 
           <div className='genres'>
             {genres.map((g) => (
