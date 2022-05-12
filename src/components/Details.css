@@ -161,12 +161,18 @@
 .details-content .season {
   margin-top: 50px;
   margin-left: 1rem;
-  overflow: auto;
   white-space: nowrap;
 }
 
 .details-content .season .list {
+  overflow: auto;
   display: flex;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.details-content .season .list::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 
 .details-content .season .list .each {
