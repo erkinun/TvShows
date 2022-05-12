@@ -4,7 +4,6 @@
 
 .details-wrapper {
   display: flex;
-  margin-top: 50px;
   color: white;
 }
 
@@ -33,7 +32,7 @@
 .back-link {
   display: flex;
   position: relative;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
 }
 
 .back-link a {
