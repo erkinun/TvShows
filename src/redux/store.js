@@ -3,11 +3,13 @@ import { detailSlice } from './detailSlice'
 import favSliceReducer from './favSlice'
 import { searchSlice } from './searchSlice'
 import { saveFavourites } from './localStorage'
+import { todaysSlice } from './todaysTvSlice'
 
 const store = configureStore({
   reducer: {
     search: searchSlice.reducer,
     detail: detailSlice.reducer,
+    today: todaysSlice.reducer,
     favs: favSliceReducer,
   },
 })

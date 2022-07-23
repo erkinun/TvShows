@@ -1,0 +1,9 @@
+.TodaysTVWrapper {
+  color: #fff;
+}
+
+.TodaysTVWrapper .TodaysTV {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
