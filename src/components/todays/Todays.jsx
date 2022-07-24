@@ -2,7 +2,6 @@ import ShowCard from '../ShowCard'
 import './Todays.css'
 
 const TodaysTV = ({ todaysShows }) => {
-  console.log(todaysShows)
   return (
     <div className='TodaysTVWrapper'>
       <h2>Todays TV</h2>
