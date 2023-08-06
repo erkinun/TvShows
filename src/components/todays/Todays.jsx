@@ -1,26 +1,26 @@
-import ShowCard from '../ShowCard'
-import './Todays.css'
+import ShowCard from "../ShowCard";
+import "./Todays.css";
 
 const TodaysTV = ({ todaysShows }) => {
   return (
-    <div className='TodaysTVWrapper'>
+    <div className="TodaysTVWrapper">
       <h2>Todays TV</h2>
-      <div className='TodaysTV'>
+      <div className="TodaysTV">
         {todaysShows.map((episode) => (
           <ShowWithEpisode key={episode.id} episode={episode} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const ShowWithEpisode = ({ episode }) => {
   return (
-    <div className='ShowEpisode'>
+    <div className="ShowEpisode">
+      <div className="time">{episode.airtime}: </div>
       <ShowCard show={episode.show} />
-      <div>Today at {episode.airtime}</div>
     </div>
-  )
-}
+  );
+};
 
-export default TodaysTV
+export default TodaysTV;
