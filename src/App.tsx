@@ -10,7 +10,7 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Header />
-      <Router basename="TvShows">
+      <Router>
         <div>
           <Routes>
             <Route path="/">

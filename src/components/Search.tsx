@@ -12,7 +12,6 @@ const Search = () => {
   const todaysDispatch = useDispatch();
   const shows = useSelector((state) => state.search.hits);
   const status = useSelector((state) => state.search.status);
-  const lastSearch = useSelector((state) => state.search.lastSearch);
   const todaysTV = useSelector((state) => state.today.hits);
 
   useEffect(() => {
@@ -21,6 +20,8 @@ const Search = () => {
       todaysDispatch(fetchToday());
     }
   }, [status, searchDispatch, todaysDispatch]);
+
+  console.log({ todaysTV });
 
   return (
     <div className="search-content">
