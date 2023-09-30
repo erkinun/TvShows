@@ -10,7 +10,7 @@ export const Header = () => {
     <nav className="flex p-2">
       <input
         placeholder="Search for a TV Show"
-        className="flex-1 p-2 rounded-md"
+        className="flex-1 p-2 rounded-md text-black"
         onChange={(e) => searchDispatch(fetchShows(e.target.value))}
       />
       <ModeToggle />

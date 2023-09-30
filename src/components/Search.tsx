@@ -5,14 +5,23 @@ import { fetchToday } from "../redux/todaysTvSlice";
 import ShowCard from "./ShowCard";
 
 import "./Search.css";
-import TodaysTV from "./todays/Todays";
+import TodaysTrending from "./todays/Todays";
+import { useQuery } from "@tanstack/react-query";
+import { trendingToday, configuration } from "@/api";
 
 const Search = () => {
+  // TODO remove all these redux bullshit with react-query
+  // TODO add favorites and watchlist
+  // TODO look at accounts and sharing
   const searchDispatch = useDispatch();
   const todaysDispatch = useDispatch();
   const shows = useSelector((state) => state.search.hits);
   const status = useSelector((state) => state.search.status);
-  const todaysTV = useSelector((state) => state.today.hits);
+  const { data: trendingTV, isLoading } = useQuery(["trending"], trendingToday);
+  const { data: configurationData, isLoading: configLoading } = useQuery(
+    ["configuration"],
+    configuration
+  );
 
   useEffect(() => {
     if (status === "idle") {
@@ -20,8 +29,6 @@ const Search = () => {
       todaysDispatch(fetchToday());
     }
   }, [status, searchDispatch, todaysDispatch]);
-
-  console.log({ todaysTV });
 
   return (
     <div className="search-content">
@@ -34,7 +41,12 @@ const Search = () => {
             ))}
         </div>
       )}
-      <TodaysTV todaysShows={todaysTV} />
+      {!isLoading && !configLoading && (
+        <TodaysTrending
+          trendingShows={trendingTV}
+          configuration={configurationData}
+        />
+      )}
     </div>
   );
 };
