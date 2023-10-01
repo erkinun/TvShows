@@ -10,7 +10,6 @@ import {
 import "./Todays.css";
 
 const TodaysTrending = ({ trendingShows, configuration }) => {
-  console.log({ trendingShows, configuration });
   return (
     <div className="TodaysTVWrapper">
       <h2>Todays TV</h2>
@@ -59,6 +58,7 @@ type TrendingProps = {
 };
 
 // use tailwind to style this
+// TODO use the ShowCard instead of this
 const Trending = ({
   trending: {
     title,

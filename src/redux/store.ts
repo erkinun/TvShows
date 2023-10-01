@@ -5,6 +5,7 @@ import { searchSlice } from "./searchSlice";
 import { saveFavourites } from "./localStorage";
 import { todaysSlice } from "./todaysTvSlice";
 
+// TODO remove this piece of shit
 const store = configureStore({
   reducer: {
     search: searchSlice.reducer,

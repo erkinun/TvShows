@@ -21,3 +21,12 @@ export async function configuration() {
     .then((response) => response.json())
     .catch((err) => console.error(err));
 }
+
+export async function search(query: string) {
+  return fetch(
+    `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => console.error(err));
+}

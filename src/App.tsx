@@ -9,13 +9,15 @@ import { Header } from "./components/Header";
 
 const queryClient = new QueryClient();
 
+// TODO root page must be trending etc and search results must be a separate page
+// TODO we can have a modal displaying the search results as a next step, enter would go to detailed search results page
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Header />
         <Router>
-          <div>
+          <Header />
+          <main>
             <Routes>
               <Route path="/">
                 <Route index element={<Search />} />
@@ -24,7 +26,7 @@ export default function App() {
                 </Route>
               </Route>
             </Routes>
-          </div>
+          </main>
         </Router>
       </ThemeProvider>
     </QueryClientProvider>
