@@ -9,26 +9,11 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import { MovieOrShow } from "@/api";
 
 // TODO create a props type from the following snippet
 type ShowCardProps = {
-  show: {
-    title: string;
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: number[];
-    id: number;
-    origin_country: string[];
-    original_language: string;
-    original_name: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    first_air_date: string;
-    name: string;
-    vote_average: number;
-    vote_count: number;
-  };
+  show: MovieOrShow;
   configuration: {
     base_url: string;
     secure_base_url: string;
@@ -56,8 +41,6 @@ const ShowCard = ({
 }: ShowCardProps) => {
   const resetDispatch = useDispatch();
 
-  console.log({ poster_sizes });
-
   return (
     <Link to={`details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
       <Card>
@@ -76,7 +59,7 @@ const ShowCard = ({
         </CardContent>
         <CardFooter>
           <div className="text-sm">{first_air_date}</div>
-          <div className="text-sm">{origin_country.join(", ")}</div>
+          <div className="text-sm">{origin_country ?? [].join(", ")}</div>
         </CardFooter>
       </Card>
     </Link>

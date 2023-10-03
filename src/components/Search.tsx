@@ -8,7 +8,6 @@ import { useSearchParams } from "react-router-dom";
 
 // TODO next step is details page
 const Search = () => {
-  // TODO remove all these redux bullshit with react-query
   // TODO add favorites and watchlist
   // TODO look at accounts and sharing
 
@@ -23,10 +22,12 @@ const Search = () => {
 
   const { data: searchResults, isLoading: searchLoading } = useQuery({
     queryKey: ["search", searchTerm],
-    queryFn: () => search(searchTerm),
+    queryFn: () => searchTerm !== "" && search(searchTerm),
   });
 
-  const shows = searchResults?.results || [];
+  console.log({ searchResults });
+
+  const shows = searchResults || [];
 
   return (
     <div className="search-content">
