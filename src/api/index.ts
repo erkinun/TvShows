@@ -35,9 +35,6 @@ export async function search(query: string) {
 
 // TODO can use append_to_response to get more info, ie videos or recommendations
 export async function getDetails(media_type: string, id: string) {
-  console.log(
-    `https://api.themoviedb.org/3/${media_type}/${id}?language=en-GB`
-  );
   return await fetch(
     `https://api.themoviedb.org/3/${media_type}/${id}?language=en-GB`,
     options
