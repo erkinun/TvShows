@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { reset } from "../redux/detailSlice";
 import {
   Card,
   CardContent,
@@ -40,14 +38,8 @@ const ShowCard = ({
   },
   configuration: { base_url, poster_sizes },
 }: ShowCardProps) => {
-  const resetDispatch = useDispatch();
-
   return (
-    <Link
-      to={`details/${media_type}/${id}`}
-      onClick={() => resetDispatch(reset())}
-      key={id}
-    >
+    <Link to={`details/${media_type}/${id}`} key={id}>
       <Card>
         <CardHeader>
           <CardTitle className="text-xl">{title ?? name}</CardTitle>
@@ -72,3 +64,45 @@ const ShowCard = ({
 };
 
 export default ShowCard;
+
+export const ShowCardSummary = ({
+  show: {
+    title,
+    id,
+    name,
+    overview = "",
+    media_type,
+    poster_path,
+    vote_average,
+    vote_count,
+  },
+  configuration: { base_url, poster_sizes },
+}: ShowCardProps) => {
+  console.log({ poster_sizes });
+  return (
+    <Link to={`details/${media_type}/${id}`} key={id}>
+      <Card>
+        <CardHeader className="flex">
+          <div className="flex gap-2">
+            <div>
+              <img
+                src={`${base_url}${poster_sizes.at(0)}${poster_path}`}
+                alt={name}
+              />
+            </div>
+            <div>
+              <CardTitle className="text-xl">{title ?? name}</CardTitle>
+              <CardDescription className="text-sm">
+                {vote_average} ({vote_count} votes)
+              </CardDescription>
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm">{overview.slice(0, 100)}</p>{" "}
+          {/* TODO convert into read more */}
+        </CardContent>
+      </Card>
+    </Link>
+  );
+};
