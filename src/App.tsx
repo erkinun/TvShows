@@ -9,6 +9,7 @@ import { Header } from "./components/Header";
 
 const queryClient = new QueryClient();
 
+// TODO remove the piece of shit redux
 // TODO root page must be trending etc and search results must be a separate page
 // TODO we can have a modal displaying the search results as a next step, enter would go to detailed search results page
 export default function App() {
