@@ -25,8 +25,6 @@ const Search = () => {
     queryFn: () => searchTerm !== "" && search(searchTerm),
   });
 
-  console.log({ searchResults });
-
   const shows = searchResults || [];
 
   return (

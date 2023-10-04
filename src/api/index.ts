@@ -8,7 +8,7 @@ const options = {
 
 export async function trendingToday() {
   return fetch(
-    "https://api.themoviedb.org/3/trending/all/day?language=en-US",
+    "https://api.themoviedb.org/3/trending/all/day?language=en-GB",
     options
   )
     .then((response) => response.json())
@@ -23,22 +23,34 @@ export async function configuration() {
 }
 
 export async function search(query: string) {
-  const tv = await fetch(
-    `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`,
+  const search = await fetch(
+    `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-GB&page=1`,
     options
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  const movies = await fetch(
-    `https://api.themoviedb.org/3/search/movie?query=bond&include_adult=false&language=en-US&page=1`,
-    options
-  )
-    .then((response) => response.json())
-    .catch((err) => console.error(err));
-
-  return [...tv.results, ...movies.results];
+  return search.results;
 }
+
+// TODO can use append_to_response to get more info, ie videos or recommendations
+export async function getDetails(media_type: string, id: string) {
+  console.log(
+    `https://api.themoviedb.org/3/${media_type}/${id}?language=en-GB`
+  );
+  return await fetch(
+    `https://api.themoviedb.org/3/${media_type}/${id}?language=en-GB`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((err) => console.error(err));
+}
+
+const MediaTypes = {
+  movie: "movie",
+  tv: "tv",
+  person: "person",
+};
 
 export type MovieOrShow = {
   adult: boolean;
@@ -53,6 +65,7 @@ export type MovieOrShow = {
   popularity: number;
   poster_path?: string;
   release_date: string;
+  media_type: keyof typeof MediaTypes;
   first_air_date: string;
   title: string;
   name: string;

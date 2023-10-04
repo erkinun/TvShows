@@ -22,7 +22,7 @@ export default function App() {
               <Route path="/">
                 <Route index element={<Search />} />
                 <Route path="details" element={<Details />}>
-                  <Route path=":showId" element={<Details />} />
+                  <Route path=":mediaType/:showId" element={<Details />} />
                 </Route>
               </Route>
             </Routes>

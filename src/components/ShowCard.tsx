@@ -31,6 +31,7 @@ const ShowCard = ({
     id,
     name,
     overview,
+    media_type,
     poster_path,
     vote_average,
     vote_count,
@@ -42,7 +43,11 @@ const ShowCard = ({
   const resetDispatch = useDispatch();
 
   return (
-    <Link to={`details/${id}`} onClick={() => resetDispatch(reset())} key={id}>
+    <Link
+      to={`details/${media_type}/${id}`}
+      onClick={() => resetDispatch(reset())}
+      key={id}
+    >
       <Card>
         <CardHeader>
           <CardTitle className="text-xl">{title ?? name}</CardTitle>

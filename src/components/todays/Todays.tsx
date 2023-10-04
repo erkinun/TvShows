@@ -15,9 +15,9 @@ const TodaysTrending = ({ trendingShows, configuration }) => {
       <h2>Todays TV</h2>
       <div className="TodaysTV">
         {trendingShows.results.map((show) => (
-          <Trending
+          <ShowCard
             key={show.id}
-            trending={show}
+            show={show}
             configuration={configuration?.images}
           />
         ))}
@@ -71,7 +71,7 @@ const Trending = ({
     first_air_date,
     origin_country,
   },
-  configuration: { base_url, poster_sizes, backdrop_sizes },
+  configuration: { base_url, poster_sizes },
 }: TrendingProps) => {
   return (
     <Card>
