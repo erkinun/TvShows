@@ -1,11 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import { ModeToggle } from "./mode-toggle";
 
 import { useSearchParams } from "react-router-dom";
 import { configuration, search } from "@/api";
 import Modal from "./ui/Modal";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { ShowCardSummary } from "./ShowCard";
+import { debounce } from "@/lib/utils";
 
 export const Header = () => {
   const { data: configurationData, isLoading: configLoading } = useQuery(
@@ -30,32 +37,40 @@ export const Header = () => {
     // TODO use bounce to delay the search
   };
 
-  return (
-    <nav className="flex p-2">
-      <input
-        placeholder="Search for a TV Show"
-        value={params.get("searchTerm") || ""}
-        className="flex-1 p-2 rounded-md text-black"
-        onChange={handleSearch}
-      />
-      <ModeToggle />
+  console.log({ isModalOpen });
 
-      {!searchLoading && shows.length > 0 && !configLoading && (
-        <Modal
-          fullWidth
-          wrapperProps="fixed z-50 mt-10 overflow-y-auto"
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          {shows.map((s) => (
-            <ShowCardSummary
-              show={s}
-              key={s.id}
-              configuration={configurationData?.images}
-            />
-          ))}
-        </Modal>
-      )}
+  return (
+    <nav className="flex gap-1 p-2">
+      <div className="flex-1">
+        <Popover open={isModalOpen}>
+          <PopoverTrigger asChild>
+            <div>
+              <input
+                placeholder="Search for a TV Show"
+                value={params.get("searchTerm") || ""}
+                className="flex-1 p-2 w-full rounded-md text-black"
+                onChange={handleSearch}
+              />
+            </div>
+          </PopoverTrigger>
+          <PopoverContent>
+            <h2>Search Results</h2>
+            {!searchLoading && shows.length > 0 && !configLoading && (
+              <>
+                {shows.map((s) => (
+                  <ShowCardSummary
+                    show={s}
+                    key={s.id}
+                    configuration={configurationData?.images}
+                  />
+                ))}
+              </>
+            )}
+          </PopoverContent>
+        </Popover>
+      </div>
+
+      <ModeToggle />
     </nav>
   );
 };

@@ -78,7 +78,6 @@ export const ShowCardSummary = ({
   },
   configuration: { base_url, poster_sizes },
 }: ShowCardProps) => {
-  console.log({ poster_sizes });
   return (
     <Link to={`details/${media_type}/${id}`} key={id}>
       <Card>
