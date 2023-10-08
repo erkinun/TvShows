@@ -9,10 +9,9 @@ import { ModeToggle } from "./mode-toggle";
 
 import { useSearchParams } from "react-router-dom";
 import { configuration, search } from "@/api";
-import Modal from "./ui/Modal";
+
 import { ChangeEvent, useState } from "react";
 import { ShowCardSummary } from "./ShowCard";
-import { debounce } from "@/lib/utils";
 
 export const Header = () => {
   const { data: configurationData, isLoading: configLoading } = useQuery(
@@ -36,8 +35,6 @@ export const Header = () => {
     setIsModalOpen(true);
     // TODO use bounce to delay the search
   };
-
-  console.log({ isModalOpen });
 
   return (
     <nav className="flex gap-1 p-2">
