@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./components/Protected";
 import { Lists } from "./pages/Lists";
 import { Login } from "./pages/Login";
 import { auth } from "./firebase";
+import { Logout } from "./pages/Logout";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ export default function App() {
                   }
                 />
                 <Route path="login" element={<Login />} />
+                <Route path="logout" element={<Logout />} />
               </Route>
             </Routes>
           </main>

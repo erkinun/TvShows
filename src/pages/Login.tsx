@@ -7,9 +7,6 @@ export function Login() {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    // TODO check if this works, if not, use a different hook
-    // TODO and put it to main.tsx
-    // TODO and make the login duration longer
     if (loading) {
       return;
     }
