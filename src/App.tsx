@@ -12,6 +12,7 @@ import { Lists } from "./pages/Lists";
 import { Login } from "./pages/Login";
 import { auth } from "./firebase";
 import { Logout } from "./pages/Logout";
+import { Profile } from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,14 @@ export default function App() {
                   element={
                     <ProtectedRoute user={user} loading={loading}>
                       <Lists />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="profile"
+                  element={
+                    <ProtectedRoute user={user} loading={loading}>
+                      <Profile />
                     </ProtectedRoute>
                   }
                 />
