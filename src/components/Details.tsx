@@ -257,8 +257,6 @@ const Details = () => {
   const mediaType = params.mediaType;
   const lists = useLists();
 
-  console.log({ lists, mediaType });
-
   const {
     data: showDetails,
     isLoading,

@@ -57,6 +57,7 @@ export async function createList(uid: string, name: string) {
     const newListKey = push(child(ref(database), "lists")).key;
     const listData = {
       name,
+      id: newListKey,
       shows: [],
     };
 
