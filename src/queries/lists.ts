@@ -15,6 +15,7 @@ export type Show = {
   id: string;
   name: string;
   apiId: string;
+  mediaType: string;
 };
 
 export function useLists() {
@@ -29,16 +30,16 @@ export function useLists() {
       onValue(listsRef, (snapshot) => {
         snapshot.forEach((child) => {
           const realRef = ref(database, `lists/${child.val()}`);
-          onValue(realRef, (collectionSnap) => {
-            const collectionData = collectionSnap.val() as ShowList;
+          onValue(realRef, (listSnap) => {
+            const listData = listSnap.val() as ShowList;
             setShowLists((existingLists) =>
               existingLists.find((list) => list.id === child.val())
                 ? existingLists
                 : existingLists.concat([
                     {
-                      name: collectionData.name,
-                      id: child.val(),
-                      shows: [],
+                      name: listData.name,
+                      id: listData.id,
+                      shows: listData.shows,
                     },
                   ])
             );
@@ -82,6 +83,15 @@ export function shareListWithUser(listId: string, username: string) {
         }
       });
     });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function updateList(showList: ShowList) {
+  try {
+    const shoppingListsRef = ref(database, `lists/${showList.id}`);
+    await update(shoppingListsRef, showList);
   } catch (error) {
     console.error(error);
   }

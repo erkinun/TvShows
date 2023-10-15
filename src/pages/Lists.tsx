@@ -3,9 +3,23 @@ import { useRef } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { ShowList, createList, useLists } from "@/queries/lists";
+import { Link } from "react-router-dom";
 
 function List({ list }: { list: ShowList }) {
-  return <div>{list.name}</div>;
+  return (
+    <div>
+      <h3>{list.name}</h3>
+      <ul>
+        {list.shows.map((show) => (
+          <li key={show.apiId}>
+            <Link to={`/details/${show.mediaType}/${show.apiId}`}>
+              {show.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export const Lists = () => {

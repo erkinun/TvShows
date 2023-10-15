@@ -7,16 +7,45 @@ import SeasonSection from "./details/Season";
 import "./Details.css";
 import { useQuery } from "@tanstack/react-query";
 import { configuration, getDetails } from "@/api";
+import { ShowLists, updateList, useLists } from "@/queries/lists";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 // TODO find a NA image and use where image doesn't exist
 
-const FavButton = ({ isFav, toggleFav }) => {
+type AddToListButtonProps = {
+  lists: ShowLists;
+  showId: string;
+  addToList: (listId: string, showId: string, add: boolean) => void;
+};
+
+const AddToListButton = ({
+  lists,
+  showId,
+  addToList,
+}: AddToListButtonProps) => {
   return (
-    <div className="fav-button">
-      <button onClick={() => toggleFav(!isFav)}>
-        {isFav ? "UnFav Buttton" : "Fav Button"}
-      </button>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger>Add to /Remove from list</DropdownMenuTrigger>
+      <DropdownMenuContent>
+        {lists.map((list) => (
+          <DropdownMenuItem key={list.id}>
+            <div className="text-white">
+              <input
+                type="checkbox"
+                checked={!!(list.shows ?? []).find((s) => s.apiId === showId)}
+                onChange={(e) => addToList(list.id, showId, e.target.checked)}
+              />{" "}
+              {list.name}
+            </div>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
@@ -226,7 +255,9 @@ const Details = () => {
   const params = useParams();
   const showId = params.showId;
   const mediaType = params.mediaType;
-  const isFavourite = false; // TODO implement
+  const lists = useLists();
+
+  console.log({ lists, mediaType });
 
   const {
     data: showDetails,
@@ -248,7 +279,7 @@ const Details = () => {
     return <div>Error: {JSON.stringify(error)}</div>;
   }
 
-  if (!showDetails) {
+  if (!showDetails || !showId) {
     return <div>No show details found</div>;
   }
 
@@ -293,12 +324,29 @@ const Details = () => {
           </div>
         </div>
         <div className="summary">{showDetails.overview}</div>
-        <FavButton
-          isFav={isFavourite}
-          toggleFav={(nextState) => {
-            if (nextState) {
-              // TODO implement
+        <AddToListButton
+          lists={lists}
+          showId={showId}
+          addToList={(listId, showId, add) => {
+            const list = lists.find((l) => l.id === listId);
+            if (!list) {
+              return;
+            }
+            if (add) {
+              updateList({
+                ...list,
+                shows: (list?.shows ?? []).concat({
+                  apiId: showId,
+                  id: showId,
+                  name: showDetails.title ?? showDetails.name,
+                  mediaType: mediaType ?? "movie",
+                }),
+              });
             } else {
+              updateList({
+                ...list,
+                shows: list?.shows.filter((s) => s.apiId !== showId),
+              });
             }
           }}
         />
