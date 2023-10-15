@@ -39,13 +39,11 @@ export function Share() {
       <div>Hi {profile.userName ?? user?.displayName}!</div>
       <div>
         <h2>Share your lists</h2>
-        <CollectionList
-          lists={lists}
-          onChange={(list) => setCollectionId(list.id)}
-        />
+        <Lists lists={lists} onChange={(list) => setCollectionId(list.id)} />
         <div>
           <label htmlFor="share">Share with</label>
           <input
+            className="text-black"
             ref={inputRef}
             type="text"
             placeholder="Enter username of user"
@@ -63,10 +61,9 @@ export type CollectionListProps = {
   onChange?: (list: ShowList) => void;
 };
 
-export function CollectionList({ lists, onChange }: CollectionListProps) {
+export function Lists({ lists, onChange }: CollectionListProps) {
   return (
     <select
-      className="text-primary bg-primary-background"
       onChange={(e) => {
         const selectedList = lists.find((list) => list.id === e.target.value);
         if (selectedList) {
