@@ -17,6 +17,7 @@ import { Share } from "./pages/Share";
 
 const queryClient = new QueryClient();
 
+// TODO auto deploy correctly from github -> netlify, env vars etc
 // TODO add a side menu bar for navigation
 // TODO root page must be trending etc and search results must be a separate page
 // TODO we can have a modal displaying the search results as a next step, enter would go to detailed search results page

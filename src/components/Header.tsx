@@ -12,6 +12,7 @@ import { configuration, search } from "@/api";
 
 import { ChangeEvent, useState } from "react";
 import { ShowCardSummary } from "./ShowCard";
+import { NavMenu } from "./NavigationMenu";
 
 export const Header = () => {
   const { data: configurationData, isLoading: configLoading } = useQuery(
@@ -67,7 +68,7 @@ export const Header = () => {
         </Popover>
       </div>
 
-      <ModeToggle />
+      <NavMenu />
     </nav>
   );
 };
