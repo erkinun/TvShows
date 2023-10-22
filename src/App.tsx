@@ -28,7 +28,7 @@ export default function App() {
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Router>
           <Header />
-          <main>
+          <main className="h-full">
             <Routes>
               <Route path="/">
                 <Route index element={<Search />} />

@@ -293,35 +293,45 @@ const Details = () => {
 
   const { base_url, poster_sizes } = configurationData?.images;
 
-  return (
-    <div className="details-wrapper">
-      <div className="details-content">
-        <div className="back-link">
-          <Link to="/">BACK</Link>
-        </div>
-        <div className="header">
-          <div className="title">{showDetails.title ?? showDetails.name}</div>
-          <div className="info">
-            {average} {networks.map((n) => n.name).join(", ")}
-            {premieredYear} - {status}
-          </div>
-          {poster_path && (
-            <img
-              className="show-img"
-              src={`${base_url}${poster_sizes.at(-1)}${poster_path}`}
-              alt="show"
-            />
-          )}
+  console.log({ poster_sizes });
 
-          <div className="genres">
-            {genres.map((g) => (
-              <div key={g.id} className="genre">
-                {g.name}
+  return (
+    <div className="details-wrapper h-full">
+      <div className="details-content">
+        <div className="header">
+          <div className="flex justify-center items-center">
+            <div>
+              <div className="title">
+                {showDetails.title ?? showDetails.name}
               </div>
-            ))}
+              <div className="info">
+                {Math.round(average * 100) / 100}{" "}
+                {networks.map((n) => n.name).join(", ")}
+                {premieredYear} - {status}
+              </div>
+            </div>
+            <div className="genres">
+              {genres.map((g) => (
+                <div key={g.id} className="genre text-sm">
+                  {g.name}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            <div className="basis-1/4">
+              {poster_path && (
+                <img
+                  src={`${base_url}${poster_sizes.at(3)}${poster_path}`}
+                  alt="show"
+                />
+              )}
+            </div>
+
+            <div className="basis-3/4 text-sm">{showDetails.overview}</div>
           </div>
         </div>
-        <div className="summary">{showDetails.overview}</div>
         <AddToListButton
           lists={lists}
           showId={showId}
