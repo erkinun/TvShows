@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import CastSection from "./details/Cast";
@@ -14,6 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { useState } from "react";
 
 // TODO find a NA image and use where image doesn't exist
 
@@ -28,19 +28,25 @@ const AddToListButton = ({
   showId,
   addToList,
 }: AddToListButtonProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>Add to /Remove from list</DropdownMenuTrigger>
+    <DropdownMenu defaultOpen open={isOpen} modal={false}>
+      <DropdownMenuTrigger onClick={() => setIsOpen((prev) => !prev)}>
+        Manage your lists
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         {lists.map((list) => (
           <DropdownMenuItem key={list.id}>
             <div className="text-white">
               <input
+                id={`show-checkbox-${list.id}`}
                 type="checkbox"
                 checked={!!(list.shows ?? []).find((s) => s.apiId === showId)}
                 onChange={(e) => addToList(list.id, showId, e.target.checked)}
               />{" "}
-              {list.name}
+              <label className="text-xl" htmlFor={`show-checkbox-${list.id}`}>
+                {list.name}
+              </label>
             </div>
           </DropdownMenuItem>
         ))}
@@ -293,18 +299,14 @@ const Details = () => {
 
   const { base_url, poster_sizes } = configurationData?.images;
 
-  console.log({ poster_sizes });
-
   return (
     <div className="details-wrapper h-full">
-      <div className="details-content">
+      <div className="details-content p-4">
         <div className="header">
-          <div className="flex justify-center items-center">
+          <div className="title">{showDetails.title ?? showDetails.name}</div>
+          <div className="flex flex-wrap justify-center items-center">
             <div>
-              <div className="title">
-                {showDetails.title ?? showDetails.name}
-              </div>
-              <div className="info">
+              <div className="info text-sm">
                 {Math.round(average * 100) / 100}{" "}
                 {networks.map((n) => n.name).join(", ")}
                 {premieredYear} - {status}

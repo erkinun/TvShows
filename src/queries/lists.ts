@@ -34,7 +34,15 @@ export function useLists() {
             const listData = listSnap.val() as ShowList;
             setShowLists((existingLists) =>
               existingLists.find((list) => list.id === child.val())
-                ? existingLists
+                ? existingLists.map((list) =>
+                    list.id === child.val()
+                      ? {
+                          name: listData.name,
+                          id: listData.id,
+                          shows: listData.shows,
+                        }
+                      : list
+                  )
                 : existingLists.concat([
                     {
                       name: listData.name,
