@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <nav className="flex gap-1 p-2">
       <div className="flex-1">
-        <Popover open={isModalOpen}>
+        <Popover open={isModalOpen} onOpenChange={setIsModalOpen}>
           <PopoverTrigger asChild>
             <div>
               <input
@@ -51,7 +51,10 @@ export const Header = () => {
               />
             </div>
           </PopoverTrigger>
-          <PopoverContent>
+          <PopoverContent
+            className="w-screen min-w-0 max-w-md rounded-md shadow-md"
+            onOpenAutoFocus={(e) => e.preventDefault()}
+          >
             <h2>Search Results</h2>
             {!searchLoading && shows.length > 0 && !configLoading && (
               <>
