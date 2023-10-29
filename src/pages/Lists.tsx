@@ -66,7 +66,23 @@ function ShowSummary({
 
 function List({ list }: { list: ShowList }) {
   const shows = list.shows ?? [];
+  console.log({ shows });
+  const mediaTypes = Array.from(new Set(shows.map((show) => show.mediaType)));
   const [shown, setShown] = useState<boolean>(false);
+  const [filters, setFilters] = useState<string[]>([]);
+  const handleFilter = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    mediaType: string
+  ) => {
+    const { checked } = e.target;
+    const value = mediaType;
+    console.log({ value, checked });
+    if (checked) {
+      setFilters((prev) => [...prev, value]);
+    } else {
+      setFilters((prev) => prev.filter((filter) => filter !== value));
+    }
+  };
   return (
     <div>
       <h3
@@ -76,12 +92,35 @@ function List({ list }: { list: ShowList }) {
         {list.name}
       </h3>
       {shown ? (
+        <>
+          <h4>Filter by type</h4>
+          <ul className="flex flex-col gap-1">
+            {mediaTypes.map((mediaType) => (
+              <li key={mediaType} className="flex gap-1">
+                <input
+                  type="checkbox"
+                  onChange={(e) => handleFilter(e, mediaType)}
+                />
+                {mediaType}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
+      {shown ? (
         <ul className="flex flex-col gap-4">
-          {shows.map((show) => (
-            <li key={show.apiId}>
-              <ShowSummary show={show} />
-            </li>
-          ))}
+          {shows
+            .filter((s) => {
+              if (filters.length === 0) {
+                return true;
+              }
+              return filters.includes(s.mediaType);
+            })
+            .map((show) => (
+              <li key={show.apiId}>
+                <ShowSummary show={show} />
+              </li>
+            ))}
         </ul>
       ) : (
         <button onClick={() => setShown(true)}>Show</button>
