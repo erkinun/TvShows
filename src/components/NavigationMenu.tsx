@@ -2,12 +2,10 @@ import { Link, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "./ui/navigation-menu";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
@@ -20,29 +18,35 @@ export const NavMenu = () => {
           <NavigationMenuTrigger>
             <HamburgerMenuIcon />
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="opacity-90">
             <NavigationMenuList>
-              <ul className="flex flex-col gap-2 w-screen">
-                <li>
-                  <NavigationMenuItem>
-                    <MenuLink href="/">Home</MenuLink>
-                  </NavigationMenuItem>
-                </li>
-                <li>
-                  <NavigationMenuItem>
-                    <MenuLink href="/lists">Lists</MenuLink>
-                  </NavigationMenuItem>
-                </li>
-                <li>
-                  <NavigationMenuItem>
-                    <MenuLink href="/share">Share</MenuLink>
-                  </NavigationMenuItem>
-                </li>
-                <li>
-                  <NavigationMenuItem>
-                    <MenuLink href="/Profile">Profile</MenuLink>
-                  </NavigationMenuItem>
-                </li>
+              <ul className="flex flex-col gap-4 w-screen pt-4 pb-4">
+                <NavigationMenuItem>
+                  <MenuLink href="/" sub="Today's TV">
+                    Home
+                  </MenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <MenuLink
+                    href="/lists"
+                    sub="Manage your favorites, watch lists"
+                  >
+                    Lists
+                  </MenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <MenuLink href="/share" sub="Share your lists with others">
+                    Share
+                  </MenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <MenuLink href="/Profile" sub="Set your username">
+                    Profile
+                  </MenuLink>
+                </NavigationMenuItem>
               </ul>
             </NavigationMenuList>
           </NavigationMenuContent>
@@ -52,17 +56,13 @@ export const NavMenu = () => {
   );
 };
 
-const MenuLink = ({ href, ...props }: { href: string }) => {
-  const location = useLocation();
-  const isActive = location.pathname === href;
-
-  return (
-    <Link to={href}>
-      <NavigationMenuLink
-        className="NavigationMenuLink"
-        active={isActive}
-        {...props}
-      />
-    </Link>
+const MenuLink = ({ href, ...props }: { href: string; sub: string }) => {
+  console.log({ props });
+  const linkChildren = (
+    <div className="flex gap-2 items-center ">
+      <div className="text-lg">{props.children}</div>
+      <div className="text-sm text-gray-300">{props.sub}</div>
+    </div>
   );
+  return <Link to={href}>{linkChildren}</Link>;
 };

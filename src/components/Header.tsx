@@ -39,6 +39,7 @@ export const Header = () => {
 
   return (
     <nav className="flex gap-1 p-2">
+      <NavMenu />
       <div className="flex-1">
         <Popover open={isModalOpen} onOpenChange={setIsModalOpen}>
           <PopoverTrigger asChild>
@@ -70,8 +71,6 @@ export const Header = () => {
           </PopoverContent>
         </Popover>
       </div>
-
-      <NavMenu />
     </nav>
   );
 };
