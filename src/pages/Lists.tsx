@@ -94,14 +94,15 @@ function List({ list }: { list: ShowList }) {
       {shown ? (
         <>
           <h4>Filter by type</h4>
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-1 my-4">
             {mediaTypes.map((mediaType) => (
-              <li key={mediaType} className="flex gap-1">
+              <li key={mediaType} className="flex gap-1 items-center">
                 <input
                   type="checkbox"
+                  className="w-6 h-6"
                   onChange={(e) => handleFilter(e, mediaType)}
                 />
-                {mediaType}
+                <label className="uppercase">{mediaType}</label>
               </li>
             ))}
           </ul>
@@ -117,7 +118,7 @@ function List({ list }: { list: ShowList }) {
               return filters.includes(s.mediaType);
             })
             .map((show) => (
-              <li key={show.apiId}>
+              <li key={show.apiId} className="border-t pt-2">
                 <ShowSummary show={show} />
               </li>
             ))}
@@ -147,10 +148,21 @@ export const Lists = () => {
         })}
       </div>
 
-      <section>
-        <h2>Create a new list ie favorites, watched etc</h2>
-        <input className="text-black" ref={inputRef} type="text" />
-        <button onClick={handleCreateButton}>Create</button>
+      <section className="p-2 flex flex-col gap-2 justify-start">
+        <div className="text-lg">
+          Create a new list ie favorites, watched etc
+        </div>
+        <input
+          className="text-black text-lg p-2 rounded"
+          ref={inputRef}
+          type="text"
+        />
+        <button
+          className="bg-white text-black rounded"
+          onClick={handleCreateButton}
+        >
+          Create
+        </button>
       </section>
     </div>
   );
