@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import CastSection from "./details/Cast";
 import SeasonSection from "./details/Season";
@@ -14,6 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, authFn } from "@/firebase";
 
 // TODO find a NA image and use where image doesn't exist
 
@@ -277,7 +279,9 @@ const Details = () => {
     configuration
   );
 
-  if (isLoading || configLoading) {
+  const [user, loading] = useAuthState(auth);
+
+  if (isLoading || configLoading || loading) {
     return <div>Loading...</div>;
   } else if (error) {
     return <div>Error: {JSON.stringify(error)}</div>;
@@ -334,32 +338,41 @@ const Details = () => {
             <div className="basis-3/4 text-sm">{showDetails.overview}</div>
           </div>
         </div>
-        <AddToListButton
-          lists={lists}
-          showId={showId}
-          addToList={(listId, showId, add) => {
-            const list = lists.find((l) => l.id === listId);
-            if (!list) {
-              return;
-            }
-            if (add) {
-              updateList({
-                ...list,
-                shows: (list?.shows ?? []).concat({
-                  apiId: showId,
-                  id: showId,
-                  name: showDetails.title ?? showDetails.name,
-                  mediaType: mediaType ?? "movie",
-                }),
-              });
-            } else {
-              updateList({
-                ...list,
-                shows: list?.shows.filter((s) => s.apiId !== showId),
-              });
-            }
-          }}
-        />
+        {user && (
+          <AddToListButton
+            lists={lists}
+            showId={showId}
+            addToList={(listId, showId, add) => {
+              const list = lists.find((l) => l.id === listId);
+              if (!list) {
+                return;
+              }
+              if (add) {
+                updateList({
+                  ...list,
+                  shows: (list?.shows ?? []).concat({
+                    apiId: showId,
+                    id: showId,
+                    name: showDetails.title ?? showDetails.name,
+                    mediaType: mediaType ?? "movie",
+                  }),
+                });
+              } else {
+                updateList({
+                  ...list,
+                  shows: list?.shows.filter((s) => s.apiId !== showId),
+                });
+              }
+            }}
+          />
+        )}
+        {!user && (
+          <div className="text-sm">
+            <button className="btn" onClick={authFn}>
+              Login with Google to add this to your lists
+            </button>
+          </div>
+        )}
         {
           // TODO implement cast
         }{" "}

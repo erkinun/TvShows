@@ -1,5 +1,4 @@
 const SeasonSection = ({ seasons = [] }) => {
-  console.log({ seasons });
   return (
     <div className="season">
       <h2>Seasons</h2>

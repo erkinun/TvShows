@@ -46,6 +46,12 @@ export const NavMenu = () => {
                     Profile
                   </MenuLink>
                 </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <MenuLink href="/logout" sub="Log out">
+                    Log out
+                  </MenuLink>
+                </NavigationMenuItem>
               </ul>
             </NavigationMenuList>
           </NavigationMenuContent>
@@ -56,7 +62,6 @@ export const NavMenu = () => {
 };
 
 const MenuLink = ({ href, ...props }: { href: string; sub: string }) => {
-  console.log({ props });
   const linkChildren = (
     <div className="flex gap-2 items-center ">
       <div className="text-lg">{props.children}</div>

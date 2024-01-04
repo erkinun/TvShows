@@ -27,7 +27,7 @@ export const Header = () => {
     queryFn: () => searchTerm !== "" && search(searchTerm),
   });
 
-  const shows = searchResults || [];
+  const shows = searchResults ?? [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
