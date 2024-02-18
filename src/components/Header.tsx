@@ -5,8 +5,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { ModeToggle } from "./mode-toggle";
-
 import { useSearchParams } from "react-router-dom";
 import { configuration, search } from "@/api";
 
@@ -53,7 +51,7 @@ export const Header = () => {
             </div>
           </PopoverTrigger>
           <PopoverContent
-            className="w-screen min-w-0 max-w-md rounded-md shadow-md"
+            className="w-screen min-w-0 max-w-md rounded-md shadow-md overflow-auto max-h-screen"
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <h2>Search Results</h2>

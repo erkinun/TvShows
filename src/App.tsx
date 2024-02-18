@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Details from "./components/Details";
-import Search from "./components/Search";
+import Dashboard from "./components/Dashboard";
 
 import "./App.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -29,7 +29,7 @@ export default function App() {
           <main className="h-full">
             <Routes>
               <Route path="/">
-                <Route index element={<Search />} />
+                <Route index element={<Dashboard />} />
                 <Route path="details" element={<Details />}>
                   <Route path=":mediaType/:showId" element={<Details />} />
                 </Route>
