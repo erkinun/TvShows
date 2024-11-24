@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
@@ -68,5 +68,5 @@ const MenuLink = ({ href, ...props }: { href: string; sub: string }) => {
       <div className="text-sm text-gray-300">{props.sub}</div>
     </div>
   );
-  return <Link to={href}>{linkChildren}</Link>;
+  return <NavigationMenuLink href={href}>{linkChildren}</NavigationMenuLink>;
 };
